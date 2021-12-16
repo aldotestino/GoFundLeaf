@@ -34,4 +34,4 @@ La sicurezza dei dati degli utenti è garantita dall’uso di API esterne:
 
 ## Architettura
 
-![https://i.imgur.com/GZZt4SC.png](https://i.imgur.com/GZZt4SC.png)
+![https://i.imgur.com/R8CfARA.jpg](https://i.imgur.com/R8CfARA.jpg)
