@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  googleId  String     @id
+  name      String
+  surname   String
+  email     String
+  photoUrl  String
+  donations Donation[]
+}
+
+model Donation {
+  googleId String
+  user     User     @relation(fields: [googleId], references: [googleId])
+  amt      String
+  dateTime DateTime @default(now())
+
+  @@id([googleId, dateTime])
+}

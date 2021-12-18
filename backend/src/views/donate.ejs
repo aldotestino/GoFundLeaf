@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GoFundLeaf</title>
     <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             height: 100vh;
             background-color: #f5f5f5;
@@ -19,27 +23,34 @@
             justify-content: space-between;
             font-family: 'Roboto', sans-serif;
         }
+
         header {
+            display: flex;
             padding: 20px;
         }
+
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
             color: black;
         }
+
         .logo_text {
             margin-left: 10px;
             font-size: x-large;
         }
+
         section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 100px;
+            margin-top: 40px;
             justify-content: center;
             font-size: xx-large;
+            text-align: center;
         }
+
         button {
             margin-top: 40px;
             background: none;
@@ -50,15 +61,18 @@
             transition: all .2s ease;
             z-index: 1000;
         }
+
         button:hover {
             background-color: rgba(81, 197, 81, 0.2);
             box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
             transform: scale(1.05);
         }
+
         button:active {
             background-color: rgba(81, 197, 81, 0.5);
             transform: scale(0.95);
         }
+
         footer {
             height: 100%;
             width: 100%;
@@ -67,16 +81,19 @@
             background-size: cover;
             background-image: url("/images/waves.svg");
         }
+
         @media only screen and (max-width: 1200px) {
             footer {
                 aspect-ratio: 600/300;
             }
         }
+
         @media only screen and (max-width: 1000px) {
             footer {
                 aspect-ratio: 400/300;
             }
         }
+
         @media only screen and (max-width: 500px) {
             footer {
                 aspect-ratio: 300/300;
@@ -84,6 +101,7 @@
         }
     </style>
 </head>
+
 <body>
     <main>
         <header>
@@ -93,7 +111,8 @@
             </a>
         </header>
         <section>
-            <h1>Benvenuto, <%= name %></h1>
+            <h1>Benvenuto, <%= name %>
+            </h1>
             <button id="paypal-button-container">
                 <div id="donate-button"></div>
             </button>
@@ -102,32 +121,33 @@
 
     <footer></footer>
     <script>
-      const googleId = '<%= googleId %>';
+        const googleId = '<%= googleId %>';
 
-      PayPal.Donation.Button({
-        env: 'sandbox',
-        hosted_button_id: 'BY46BQVK4WEY6',
-        business: 'sb-gswxv8854258@business.example.com',
-        image: {
-          src: 'https://pics-v2.sandbox.paypal.com/00/s/MzYyYzljYTktMGQyYi00NWFmLWFiMjktNGMzZjI4YTkyMzFh/file.PNG',
-          title: 'PayPal - The safer, easier way to pay online!',
-          alt: 'Continua con PayPal'
-        },
-        onComplete: async (params) => {
-          fetch('/donate', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
+        PayPal.Donation.Button({
+            env: 'sandbox',
+            hosted_button_id: 'BY46BQVK4WEY6',
+            business: 'sb-gswxv8854258@business.example.com',
+            image: {
+                src: 'https://pics-v2.sandbox.paypal.com/00/s/MzYyYzljYTktMGQyYi00NWFmLWFiMjktNGMzZjI4YTkyMzFh/file.PNG',
+                title: 'PayPal - The safer, easier way to pay online!',
+                alt: 'Continua con PayPal'
             },
-            body: JSON.stringify({
-              googleId,
-              amt: params.amt
-            })
-          })
-        },
-      }).render('#donate-button');
+            onComplete: async (params) => {
+                fetch('/donate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        googleId,
+                        amt: params.amt
+                    })
+                })
+            },
+        }).render('#donate-button');
 
-      console.log(googleId);
+        console.log(googleId);
     </script>
 </body>
+
 </html>

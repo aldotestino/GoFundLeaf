@@ -1,5 +1,7 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import { join } from 'path';
+import donateController from './controllers/donateController';
+import authController from './controllers/authController';
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -7,17 +9,8 @@ app.set('views', join(__dirname, 'views'));
 app.use(express.static(join(__dirname, 'public')));
 app.use(express.json());
 
-app.get('/donate', (req: Request, res: Response) => {
-  const { googleId } = req.query;
-  res.render('donate', {
-    name: 'Tizio',
-    googleId
-  });
-});
-
-app.post('/donate', (req: Request, _res: Response) => {
-  console.log(req.body);
-});
+app.use('/auth', authController);
+app.use('/donate', donateController);
 
 const PORT = process.env.PORT || 8080;
 
