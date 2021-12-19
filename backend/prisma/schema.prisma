@@ -22,7 +22,7 @@ model User {
 model Donation {
   googleId String
   user     User     @relation(fields: [googleId], references: [googleId])
-  amt      String
+  amt      Float
   dateTime DateTime @default(now())
 
   @@id([googleId, dateTime])

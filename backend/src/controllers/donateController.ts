@@ -30,13 +30,13 @@ donateController.get('/', async (req: Request, res: Response) => {
 });
 
 interface DonationBodyRequest {
-  googleId?: string,
-  amt?: string
+  googleId: string,
+  amt: number
 }
 
 donateController.post('/', async (req: Request) => {
-  const { googleId, amt }: DonationBodyRequest = req.body;
-  
+  const { googleId, amt }: Partial<DonationBodyRequest> = req.body;
+
   if(googleId && amt) {
     await db.donation.create({
       data: {
