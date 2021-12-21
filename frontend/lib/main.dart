@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:gofundleaf/google_signin_api.dart';
 
@@ -37,11 +39,12 @@ class MyHomePage extends StatelessWidget {
               child: const Text('Login'),
               onPressed: () async {
                 final googleUser = await GoogleSignInApi.login();
+                print(googleUser);
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) => Profilo(
                         email: googleUser!.email,
-                        photoUrl: googleUser.photoUrl!),
+                        photoUrl: googleUser.photoUrl),
                   ),
                 );
               },
@@ -55,7 +58,7 @@ class MyHomePage extends StatelessWidget {
 
 class Profilo extends StatelessWidget {
   final String email;
-  final String photoUrl;
+  final String? photoUrl;
   const Profilo({Key? key, required this.email, required this.photoUrl})
       : super(key: key);
 
@@ -72,7 +75,17 @@ class Profilo extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 50,
-              backgroundImage: NetworkImage(photoUrl),
+              child: Platform.isAndroid && photoUrl == null
+                  ? Text(
+                      email[0].toUpperCase(),
+                      style: const TextStyle(fontSize: 48),
+                    )
+                  : null,
+              backgroundImage: Platform.isIOS
+                  ? NetworkImage(photoUrl!)
+                  : photoUrl != null
+                      ? NetworkImage(photoUrl!)
+                      : null,
             ),
             const SizedBox(height: 20),
             Text(email),
