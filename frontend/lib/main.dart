@@ -1,14 +1,16 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:gofundleaf/google_signin_api.dart';
+
+import 'services/auth.dart';
+import 'models/user.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -19,13 +21,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const Home(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class Home extends StatelessWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +40,14 @@ class MyHomePage extends StatelessWidget {
             ElevatedButton(
               child: const Text('Login'),
               onPressed: () async {
-                final googleUser = await GoogleSignInApi.login();
-                print(googleUser);
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => Profilo(
-                        email: googleUser!.email,
-                        photoUrl: googleUser.photoUrl),
-                  ),
-                );
+                final user = await Auth.login();
+                if (user != null) {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => Profile(user: user),
+                    ),
+                  );
+                }
               },
             ),
           ],
@@ -56,11 +57,9 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class Profilo extends StatelessWidget {
-  final String email;
-  final String? photoUrl;
-  const Profilo({Key? key, required this.email, required this.photoUrl})
-      : super(key: key);
+class Profile extends StatelessWidget {
+  final User user;
+  const Profile({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -75,28 +74,28 @@ class Profilo extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 50,
-              child: Platform.isAndroid && photoUrl == null
+              child: Platform.isAndroid && user.photoUrl == null
                   ? Text(
-                      email[0].toUpperCase(),
+                      user.name[0].toUpperCase(),
                       style: const TextStyle(fontSize: 48),
                     )
                   : null,
               backgroundImage: Platform.isIOS
-                  ? NetworkImage(photoUrl!)
-                  : photoUrl != null
-                      ? NetworkImage(photoUrl!)
+                  ? NetworkImage(user.photoUrl!)
+                  : user.photoUrl != null
+                      ? NetworkImage(user.photoUrl!)
                       : null,
             ),
             const SizedBox(height: 20),
-            Text(email),
+            Text('${user.name} ${user.surname}'),
             const SizedBox(height: 20),
             ElevatedButton(
               child: const Text('Logout'),
               onPressed: () async {
-                await GoogleSignInApi.logout();
+                await Auth.logout();
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                    builder: (context) => const MyHomePage(),
+                    builder: (context) => const Home(),
                   ),
                 );
               },
