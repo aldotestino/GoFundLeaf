@@ -47,7 +47,7 @@ authController.post('/login', async (req: Request, res: Response) => {
     donations: user.donations.map(d => ({
       amt: d.amt,
       date: formatDate(d.dateTime)
-    }))
+    })).reverse()
   };
 
   res.json(formattedUser);
