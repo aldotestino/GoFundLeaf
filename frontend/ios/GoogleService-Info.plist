@@ -3,12 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>511852481666-9mb1r71528pj00aed01c1rqdp2q277ne.apps.googleusercontent.com</string>
+	<string>756518914212-tucd9jse87hemcmeddf734uiq343rakf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.511852481666-9mb1r71528pj00aed01c1rqdp2q277ne</string>
+	<string>com.googleusercontent.apps.756518914212-tucd9jse87hemcmeddf734uiq343rakf</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>756518914212-ca32hclk58lssbbpdjunk1h2ghlah8rl.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAlY5k4jhXnBtQ-OuzOHelChd8ikK9QQpk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>756518914212</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.gruppo43.gofundleaf</string>
+	<key>PROJECT_ID</key>
+	<string>g43-gofundleaf</string>
+	<key>STORAGE_BUCKET</key>
+	<string>g43-gofundleaf.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:756518914212:ios:aed47431c09c03dad2be31</string>
 </dict>
 </plist>

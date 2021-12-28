@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Gofundleaf</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -40,8 +42,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-
+	<true/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -49,10 +50,9 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.511852481666-9mb1r71528pj00aed01c1rqdp2q277ne</string>
+				<string>com.googleusercontent.apps.756518914212-tucd9jse87hemcmeddf734uiq343rakf</string>
 			</array>
 		</dict>
 	</array>
-
 </dict>
 </plist>
