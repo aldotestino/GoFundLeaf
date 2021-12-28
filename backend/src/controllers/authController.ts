@@ -56,9 +56,29 @@ authController.post('/login', async (req: Request, res: Response) => {
     res.json({
       status: 'error',
       info: e.message
-    })
+    });
   }
   
+});
+
+authController.delete('/delete', async (req: Request, res: Response) => {
+  const { googleId } = req.body;
+  try {
+    await db.user.delete({
+      where: {
+        googleId
+      },
+    });
+    
+    res.json({
+      status: 'ok'
+    });
+  }catch(e: any) {
+    res.json({
+      status: 'error',
+      info: e.message
+    });
+  }
 });
 
 export default authController;

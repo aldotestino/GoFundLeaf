@@ -6,9 +6,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
-  static final _uri = Uri.parse(Platform.isAndroid
-      ? 'http://10.0.2.2:8080/auth/login'
-      : 'http://localhost:8080/auth/login');
+  static final _uri = Platform.isAndroid
+      ? 'http://10.0.2.2:8080/auth'
+      : 'http://localhost:8080/auth';
 
   static final _googleSignIn = GoogleSignIn();
 
@@ -20,11 +20,9 @@ class AuthService {
 
     final auth = await googleUser.authentication;
 
-    print(auth.idToken);
-
     try {
       final response = await http.post(
-        _uri,
+        Uri.parse('$_uri/login'),
         body: json.encode(
           {'token': auth.idToken},
         ),
@@ -40,5 +38,29 @@ class AuthService {
 
   static Future<GoogleSignInAccount?> logout() {
     return _googleSignIn.disconnect();
+  }
+
+  static Future<bool> deleteProfile(String googleId) async {
+    logout();
+
+    try {
+      final response = await http.delete(
+        Uri.parse('$_uri/delete'),
+        body: json.encode(
+          {'googleId': googleId},
+        ),
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      final jsonRes = jsonDecode(response.body);
+      if (jsonRes['status'] == 'ok') {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      print(error);
+      return false;
+    }
   }
 }

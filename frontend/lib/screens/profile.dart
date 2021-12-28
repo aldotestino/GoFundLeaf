@@ -70,6 +70,24 @@ class _ProfileState extends State<Profile> {
                 },
               ),
               ElevatedButton(
+                child: const Text('Elimina profilo'),
+                style: ElevatedButton.styleFrom(primary: Colors.red),
+                onPressed: () async {
+                  final deleted =
+                      await AuthService.deleteProfile(_user!.googleId);
+                  final snackBar = SnackBar(
+                      content: Text(deleted
+                          ? 'Profilo eliminato con successo'
+                          : 'Si è verificato un errore'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => const Home(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
                   child: const Text('Dona con PayPal'),
                   onPressed: () async {
                     setState(() {

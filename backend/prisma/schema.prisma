@@ -21,7 +21,7 @@ model User {
 
 model Donation {
   googleId String
-  user     User     @relation(fields: [googleId], references: [googleId])
+  user     User     @relation(fields: [googleId], references: [googleId], onDelete: Cascade)
   amt      Float
   dateTime DateTime @default(now())
 
