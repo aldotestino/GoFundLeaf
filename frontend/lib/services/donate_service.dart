@@ -7,9 +7,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 
 class DonateService {
-  static final _uri = Platform.isIOS
-      ? 'http://localhost:8080/donate'
-      : 'http://10.0.2.2:8000/donate';
+  static final _uri = Platform.isAndroid
+      ? 'http://10.0.2.2:8080/donate'
+      : 'http://localhost:8080/donate';
 
   static Future<List<Donation>> donate(String googleId) async {
     await launch(_uri + '?googleId=$googleId');

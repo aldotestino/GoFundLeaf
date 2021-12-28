@@ -6,9 +6,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
-  static final _uri = Uri.parse(Platform.isIOS
-      ? 'http://localhost:8080/auth/login'
-      : 'http://10.0.2.2:8080/auth/login');
+  static final _uri = Uri.parse(Platform.isAndroid
+      ? 'http://10.0.2.2:8080/auth/login'
+      : 'http://localhost:8080/auth/login');
 
   static final _googleSignIn = GoogleSignIn();
 
@@ -19,6 +19,8 @@ class AuthService {
     }
 
     final auth = await googleUser.authentication;
+
+    print(auth.idToken);
 
     try {
       final response = await http.post(
