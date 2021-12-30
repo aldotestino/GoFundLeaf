@@ -29,15 +29,62 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profilo'),
-        automaticallyImplyLeading: false,
+        title: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Image.asset('assets/images/small.png'),
+                  const SizedBox(width: 10),
+                  const Text('leaf')
+                ],
+              ),
+              PopupMenuButton(
+                icon: const Icon(Icons.menu),
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    child: const Text('Logout'),
+                    value: 'logout',
+                    onTap: () async {
+                      await AuthService.logout();
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const Home(),
+                        ),
+                      );
+                    },
+                  ),
+                  PopupMenuItem(
+                    child: const Text('Elimina profilo'),
+                    value: 'delete_profile',
+                    onTap: () async {
+                      final deleted =
+                          await AuthService.deleteProfile(_user!.googleId);
+                      final snackBar = SnackBar(
+                          content: Text(deleted
+                              ? 'Profilo eliminato con successo'
+                              : 'Si è verificato un errore'));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const Home(),
+                        ),
+                      );
+                    },
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
       ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(left: 24, right: 24),
           child: Column(
             children: [
-              const SizedBox(height: 40),
               CircleAvatar(
                 radius: 50,
                 child: Platform.isAndroid && _user?.photoUrl == null
@@ -58,35 +105,6 @@ class _ProfileState extends State<Profile> {
                 style: const TextStyle(fontSize: 20),
               ),
               const SizedBox(height: 10),
-              ElevatedButton(
-                child: const Text('Logout'),
-                onPressed: () async {
-                  await AuthService.logout();
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => const Home(),
-                    ),
-                  );
-                },
-              ),
-              ElevatedButton(
-                child: const Text('Elimina profilo'),
-                style: ElevatedButton.styleFrom(primary: Colors.red),
-                onPressed: () async {
-                  final deleted =
-                      await AuthService.deleteProfile(_user!.googleId);
-                  final snackBar = SnackBar(
-                      content: Text(deleted
-                          ? 'Profilo eliminato con successo'
-                          : 'Si è verificato un errore'));
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => const Home(),
-                    ),
-                  );
-                },
-              ),
               ElevatedButton(
                   child: const Text('Dona con PayPal'),
                   onPressed: () async {
