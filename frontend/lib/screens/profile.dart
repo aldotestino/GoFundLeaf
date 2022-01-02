@@ -57,7 +57,10 @@ class _ProfileState extends State<Profile> {
                     },
                   ),
                   PopupMenuItem(
-                    child: const Text('Elimina profilo'),
+                    child: const Text(
+                      'Elimina profilo',
+                      style: TextStyle(color: Colors.red),
+                    ),
                     value: 'delete_profile',
                     onTap: () async {
                       final deleted =

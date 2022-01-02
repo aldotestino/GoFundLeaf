@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gofundleaf/screens/profile.dart';
@@ -23,7 +25,7 @@ class _HomeState extends State<Home> {
             children: [
               Image.asset('assets/images/small.png'),
               const SizedBox(width: 10),
-              const Text('leaf')
+              const Text('GoFundLeaf')
             ],
           ),
         ),
@@ -31,7 +33,29 @@ class _HomeState extends State<Home> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const SizedBox(),
+          Container(
+            child: Column(
+              children: [
+                const SizedBox(height: 40, width: 10),
+                Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(5),
+                    ),
+                    const Text(
+                      'L\'agricoltura non è \n mai stata \n così semplice!',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
           Center(
             child: _loading
                 ? const CupertinoActivityIndicator()
