@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gofundleaf/components/avatar.dart';
-import 'package:gofundleaf/components/backgroundContainer.dart';
-import 'package:gofundleaf/components/buttonIcon.dart';
+import 'package:gofundleaf/components/background_container.dart';
+import 'package:gofundleaf/components/button_icon.dart';
 import 'package:gofundleaf/models/user.dart';
 import 'package:gofundleaf/screens/home.dart';
 import 'package:gofundleaf/services/auth_service.dart';

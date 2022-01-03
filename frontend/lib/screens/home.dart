@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gofundleaf/components/backgroundContainer.dart';
+import 'package:gofundleaf/components/background_container.dart';
 import 'package:gofundleaf/screens/profile.dart';
 import 'package:gofundleaf/services/auth_service.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:gofundleaf/components/buttonIcon.dart';
+import 'package:gofundleaf/components/button_icon.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
