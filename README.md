@@ -6,16 +6,16 @@ Quest’app è quindi rivolta a tutti coloro che vogliano supportare economicame
 
 ## Requisiti funzionali
 
-- Login: L’app deve permettere agli utenti di effettuare il login tramite il proprio account Google
-- Donate: In seguito al login, l’utente avrà la possibilità di fare una donazione libera per…
+- Login: L’app deve permettere agli utenti di effettuare il login tramite il proprio account Google;
+- Donate: In seguito al login, l’utente avrà la possibilità di fare una donazione libera per sostenere il progetto.
 
 ## Requsiti di implementazione
 
-- Flutter per lo sviluppo crossplatform dell’app
-- Node.js server
-- Utilizzo di database Postgres per memorizzazione degli utenti
-- Uso di Docker per lo sviluppo e per il deploy finale
-- Hosting del server su AWS
+- Flutter per lo sviluppo crossplatform dell’app;
+- Node.js server;
+- Utilizzo di database Postgres per memorizzazione degli utenti;
+- Uso di Docker per lo sviluppo e per il deploy finale;
+- Hosting del server su AWS.
 
 ## Requisiti di affidabilità e sicurezza
 
@@ -26,12 +26,16 @@ La sicurezza dei dati degli utenti è garantita dall’uso di API esterne:
 
 ## Diagramma di Gantt
 
-![https://i.imgur.com/R6qipdc.png](https://i.imgur.com/R6qipdc.png)
+![Gantt](/images/gantt.png)
 
 ## Mockup
 
-![https://i.imgur.com/O6hc09b.png](https://i.imgur.com/O6hc09b.png)
+![Mockup](/images/mockup.png)
 
 ## Architettura
 
-![https://i.imgur.com/R8CfARA.jpg](https://i.imgur.com/R8CfARA.jpg)
+![Architecture](/images/architecture.jpeg)
+
+## UML
+
+![UML](/images/UML.jpeg)
