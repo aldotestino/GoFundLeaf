@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   bool _loading = false;
 
-  void login() async {
+  void handleLogin() async {
     setState(() {
       _loading = true;
     });
@@ -75,7 +75,8 @@ class _HomeState extends State<Home> {
                   : ButtonIcon(
                       label: 'Entra con Google',
                       icon: FontAwesomeIcons.google,
-                      action: login),
+                      action: handleLogin,
+                    ),
             ),
           ],
         ),

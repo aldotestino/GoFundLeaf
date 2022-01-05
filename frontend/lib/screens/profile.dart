@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gofundleaf/components/avatar.dart';
 import 'package:gofundleaf/components/background_container.dart';
 import 'package:gofundleaf/components/button_icon.dart';
+import 'package:gofundleaf/components/donations_list.dart';
 import 'package:gofundleaf/models/user.dart';
 import 'package:gofundleaf/screens/home.dart';
 import 'package:gofundleaf/services/auth_service.dart';
@@ -50,9 +51,12 @@ class _ProfileState extends State<Profile> {
   void handledelete() async {
     final deleted = await AuthService.deleteProfile(_user.googleId);
     final snackBar = SnackBar(
-        content: Text(deleted
+      content: Text(
+        deleted
             ? 'Profilo eliminato con successo'
-            : 'Si è verificato un errore'));
+            : 'Si è verificato un errore',
+      ),
+    );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
@@ -116,9 +120,10 @@ class _ProfileState extends State<Profile> {
                     ),
                     const SizedBox(height: 10),
                     ButtonIcon(
-                        label: 'Dona con PayPal',
-                        icon: FontAwesomeIcons.paypal,
-                        action: handleDonate),
+                      label: 'Dona con PayPal',
+                      icon: FontAwesomeIcons.paypal,
+                      action: handleDonate,
+                    ),
                     const SizedBox(height: 20),
                   ],
                 ),
@@ -132,34 +137,10 @@ class _ProfileState extends State<Profile> {
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
-            Expanded(
+            Container(
               child: _loading
                   ? const CupertinoActivityIndicator()
-                  : ListView.separated(
-                      itemCount: _user.donations.length,
-                      separatorBuilder: (context, index) => const Divider(
-                        thickness: 1,
-                        color: Colors.grey,
-                      ),
-                      itemBuilder: (context, index) => ListTile(
-                        title: Padding(
-                          padding: const EdgeInsets.fromLTRB(4, 16, 4, 16),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '€ ${widget.user.donations[index].amt.toStringAsFixed(2)}', // user.donations.length - index - 1 per visualizzare la donazione più recente per prima
-                                style: const TextStyle(fontSize: 30),
-                              ),
-                              Text(
-                                widget.user.donations[index].date,
-                                style: const TextStyle(fontSize: 18),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                  : Expanded(child: DonationList(donations: _user.donations)),
             ),
           ],
         ),
