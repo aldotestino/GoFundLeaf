@@ -1,5 +1,7 @@
 # GoFundLeaf
 
+![Render](/images/render.png)
+
 La Progressive Web App dovrà permettere agli utenti di effettuare il login tramite il proprio account Google ed effettuare una donazione volontaria tramite PayPal.
 
 Quest’app è quindi rivolta a tutti coloro che vogliano supportare economicamente il progetto LEAF.
