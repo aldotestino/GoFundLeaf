@@ -9,6 +9,7 @@ import 'package:gofundleaf/screens/home.dart';
 import 'package:gofundleaf/services/auth_service.dart';
 import 'package:gofundleaf/services/donate_service.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gofundleaf/services/notification_service.dart';
 
 class Profile extends StatefulWidget {
   final User user;
@@ -25,6 +26,7 @@ class _ProfileState extends State<Profile> {
   @override
   void initState() {
     super.initState();
+    NotificationService.init();
     _user = widget.user;
   }
 
@@ -32,7 +34,8 @@ class _ProfileState extends State<Profile> {
     setState(() {
       _loading = true;
     });
-    final ds = await DonateService.donate(_user.googleId);
+    final ds =
+        await DonateService.donate(_user.googleId, _user.donations.length);
     _user.donations = ds;
     setState(() {
       _loading = false;

@@ -2,57 +2,57 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GoFundLeaf</title>
-    <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GoFundLeaf</title>
+  <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <main>
-        <header>
-            <a class="logo" target="_blank" href="https://leaf.vision">
-                <img src="/images/small.png" alt="leaf_logo">
-                <span class="logo_text">GoFundLeaf</span>
-            </a>
-        </header>
-        <section>
-            <h1>Benvenuto, <%= name %>
-            </h1>
-            <button id="paypal-button-container">
-                <div id="donate-button"></div>
-            </button>
-        </section>
-    </main>
+  <main>
+    <header>
+      <a class="logo" target="_blank" href="https://leaf.vision">
+        <img src="/images/small.png" alt="leaf_logo">
+        <span class="logo_text">GoFundLeaf</span>
+      </a>
+    </header>
+    <section>
+      <h1>Benvenuto <%= name %>
+      </h1>
+      <button id="paypal-button-container">
+        <div id="donate-button"></div>
+      </button>
+    </section>
+  </main>
 
-    <footer></footer>
-    <script>
-      const googleId = '<%= googleId %>';
+  <footer></footer>
+  <script>
+    const googleId = '<%= googleId %>';
 
-      PayPal.Donation.Button({
-        env: 'sandbox',
-        hosted_button_id: 'BY46BQVK4WEY6',
-        business: 'sb-gswxv8854258@business.example.com',
-        image: {
-          src: 'https://pics-v2.sandbox.paypal.com/00/s/MzYyYzljYTktMGQyYi00NWFmLWFiMjktNGMzZjI4YTkyMzFh/file.PNG',
-          title: 'PayPal - The safer, easier way to pay online!',
-          alt: 'Continua con PayPal'
-        },
-        onComplete: (params) => {
-          fetch('/donate', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              googleId,
-              amt: parseFloat(params.amt)
-            })
-          });
-        },
-      }).render('#donate-button');
-    </script>
+    PayPal.Donation.Button({
+      env: 'sandbox',
+      hosted_button_id: 'BY46BQVK4WEY6',
+      business: 'sb-gswxv8854258@business.example.com',
+      image: {
+        src: 'https://pics-v2.sandbox.paypal.com/00/s/MzYyYzljYTktMGQyYi00NWFmLWFiMjktNGMzZjI4YTkyMzFh/file.PNG',
+        title: 'PayPal - The safer, easier way to pay online!',
+        alt: 'Continua con PayPal'
+      },
+      onComplete: (params) => {
+        fetch('/donate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            googleId,
+            amt: parseFloat(params.amt)
+          })
+        });
+      },
+    }).render('#donate-button');
+  </script>
 </body>
 
 </html>
