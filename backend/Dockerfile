@@ -5,4 +5,4 @@ RUN npm install
 COPY . .
 RUN npm run prisma:generate
 EXPOSE 8080
-CMD npm run dev
+CMD ./run-backend.sh

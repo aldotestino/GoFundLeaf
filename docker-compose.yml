@@ -8,8 +8,24 @@ services:
       - /usr/app/backend/node_modules
     environment:
       - PORT=8080
-      - DATABASE_URL=postgresql://postgres:postgres@13.237.239.119:5432/gofundleaf?schema=public
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/gofundleaf?schema=public
       - GOOGLE_CLIENT_ID=756518914212-1vskm0087acrsii1ihq3r74hg8i24som.apps.googleusercontent.com
     ports:
       - "8080:8080"
     container_name: backend
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    volumes:
+      - ./database-data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    container_name: db
+
+volumes:
+  database-data: null
