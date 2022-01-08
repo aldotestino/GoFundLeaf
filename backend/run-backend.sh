@@ -1,9 +1,8 @@
 #!/bin/bash
 
+echo "--> Waiting for db..."
 sleep 15
 echo "--> Running migration..."
 npm run prisma:migrate-dev --name init
-echo "--> Running generation..."
-npm run prisma:generate
-echo "--> Server starting..."
+echo "--> Server starting in dev mode..."
 npm run dev

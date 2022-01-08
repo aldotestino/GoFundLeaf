@@ -1,4 +1,5 @@
 .DS_STORE
 backend/node_modules
+backend/dist
 .idea
 database-data
