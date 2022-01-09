@@ -1,6 +1,6 @@
 # GoFundLeaf
 
-![Render](/images/render.png)
+![Render](/readme-images/render.png)
 
 La Progressive Web App dovrà permettere agli utenti di effettuare il login tramite il proprio account Google ed effettuare una donazione volontaria tramite PayPal.
 
@@ -28,16 +28,16 @@ La sicurezza dei dati degli utenti è garantita dall’uso di API esterne:
 
 ## Diagramma di Gantt
 
-![Gantt](/images/gantt.png)
+![Gantt](/readme-images/gantt.png)
 
 ## Mockup
 
-![Mockup](/images/mockup.png)
+![Mockup](/readme-images/mockup.png)
 
 ## Architettura
 
-![Architecture](/images/architecture.jpeg)
+![Architecture](/readme-images/architecture.jpeg)
 
 ## UML
 
-![UML](/images/UML.jpeg)
+![UML](/readme-images/UML.jpeg)
