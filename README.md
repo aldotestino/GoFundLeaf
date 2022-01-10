@@ -11,7 +11,7 @@ Quest’app è quindi rivolta a tutti coloro che vogliano supportare economicame
 - Login: L’app deve permettere agli utenti di effettuare il login tramite il proprio account Google;
 - Donate: In seguito al login, l’utente avrà la possibilità di fare una donazione libera per sostenere il progetto.
 
-## Requsiti di implementazione
+## Requisiti di implementazione
 
 - Flutter per lo sviluppo crossplatform dell’app;
 - Node.js server;
