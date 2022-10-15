@@ -20,7 +20,7 @@ class DonateService {
     // rimani in ascolto per sapere quando viene chiuso il browser
     await Future.delayed(const Duration(milliseconds: 100));
     while (
-        WidgetsBinding.instance?.lifecycleState != AppLifecycleState.resumed) {
+        WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed) {
       await Future.delayed(const Duration(milliseconds: 100));
     }
 
